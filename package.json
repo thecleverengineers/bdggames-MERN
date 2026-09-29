@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server/index.js",
+    "start:render": "npm run db:indexes && npm run seed && node server/index.js",
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
     "dev:api": "nodemon server/index.js",
     "dev:client": "npm --prefix client run dev",
