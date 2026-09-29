@@ -8,6 +8,10 @@ The server exposes the React application, REST API, Socket.IO endpoint and retai
 - A domain pointed at the server, with TLS terminated by Nginx or a comparable proxy.
 - A long random JWT secret. Generate one with `openssl rand -base64 48`.
 
+## Render Blueprint
+
+The repository root contains `render.yaml`. Create a Render Blueprint from this repository and provide the requested Atlas `MONGODB_URI`, administrator email and administrator password as secret environment variables. Render generates `JWT_SECRET`, uses the injected `PORT`, and builds the React client before starting the Node service. The server automatically permits its own `onrender.com` origin; after adding a custom domain, set `CLIENT_ORIGIN` to that HTTPS domain and redeploy.
+
 ## Install and configure
 
 ```bash

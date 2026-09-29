@@ -1,0 +1,29 @@
+services:
+  - type: web
+    runtime: node
+    name: bdggames-mern
+    plan: free
+    branch: main
+    buildCommand: npm ci && npm --prefix client ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: NODE_ENV
+        value: production
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: APP_MODE
+        value: demo
+      - key: REAL_MONEY_ENABLED
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
